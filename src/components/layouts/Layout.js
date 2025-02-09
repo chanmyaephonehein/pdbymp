@@ -3,10 +3,9 @@ import React from "react";
 import UserLayout from "./UserLayout";
 import AdminLayout from "./AdminLayout";
 
-const Layout = (children) => {
+const Layout = ({ children }) => {
   const router = useRouter();
   const adminLayout = router.pathname.includes("/admin");
-  // const userLayout = router.pathname.includes("/user");
   if (adminLayout) {
     return (
       <>

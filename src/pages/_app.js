@@ -6,7 +6,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <tite>AI-Solution</tite>
+        <title>AI-Solution by MPHK</title>
       </Head>
       <Layout>
         <Component {...pageProps} />
