@@ -1,3 +1,5 @@
+import SolutionCard from "@/components/cards/SolutionCard";
+
 const Home = () => {
   return (
     <>

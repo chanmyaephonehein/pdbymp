@@ -6,7 +6,7 @@ const UserLayout = (props) => {
   return (
     <>
       <UserHeader />
-      <div>{props.children}</div>
+      <div className="px-24 py-8">{props.children}</div>
       <UserFooter />
     </>
   );
