@@ -4,7 +4,7 @@ const SolutionCard = ({ title, content, list, button }) => {
   return (
     <div className="rounded-lg shadow-lg w-2/5 h-96  flex flex-col items-center justify-between px-5 py-6">
       <div className="flex flex-col">
-        <p className="text-2xl align-center pb-4 text-center px-8 font-bold">
+        <p className="text-xl align-center pb-4 text-center px-8 font-semibold">
           {title}
         </p>
         <p className="pb-4 text-lg px-4 text-justify">{content}</p>

@@ -111,8 +111,8 @@ const Solutions = () => {
         AI-Driven Software Solutions for Smarter Business Outcomes
       </p>
       {solutionsType.map((item, index) => (
-        <div key={index} className="flex flex-col gap-3 mb-10">
-          <p className="ml-24 font-semibold text-3xl">{item.header}</p>
+        <div key={index} className="flex flex-col gap-1 mb-10">
+          <p className="ml-24 text-2xl font-bold">{item.header}</p>
           <div className="flex justify-center gap-24">
             {item.data.map((itm, index) => (
               <SolutionCard
