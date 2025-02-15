@@ -3,7 +3,7 @@ const ContactUs = () => {
     <div className="flex justify-center">
       <div className="w-full  bg-gray-900 p-8  flex">
         {/* Left Section */}
-        <div className="w-1/2 text-white pr-8 flex flex-col items-center ">
+        <div className="w-1/2 text-white pr-8 flex flex-col items-center mt-20">
           <h2 className="text-2xl font-bold mb-4 ">
             Let’s Build the Future Together
           </h2>

@@ -38,6 +38,7 @@ const UserHeader = () => {
     {
       name: "Industries",
       dropdown: [
+        { name: "All Industries", link: "/user/industries" },
         { name: "Education", link: "/user/industries/1" },
         { name: "Finance", link: "/user/industries/2" },
         { name: "Healthcare", link: "/user/industries/3" },

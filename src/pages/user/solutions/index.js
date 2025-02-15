@@ -121,7 +121,7 @@ const Solutions = () => {
       {solutionsType.map((item, index) => (
         <div key={index} className="flex flex-col gap-1 mb-10">
           <p className="ml-24 text-2xl font-bold">{item.header}</p>
-          <div className="flex justify-center gap-24">
+          <div className="flex justify-center flex-wrap gap-24">
             {item.data.map((itm, index) => (
               <SolutionCard
                 key={item.id}

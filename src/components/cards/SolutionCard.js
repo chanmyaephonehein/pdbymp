@@ -11,11 +11,12 @@ const SolutionCard = ({ title, content, list, button, route }) => {
         </p>
         <p className="pb-4 text-lg px-4 text-justify">{content}</p>
         <ul className="list-disc pl-24">
-          {list.map((item, index) => (
-            <li key={index} className="text-md ">
-              {item}
-            </li>
-          ))}
+          {list &&
+            list.map((item, index) => (
+              <li key={index} className="text-md ">
+                {item}
+              </li>
+            ))}
         </ul>
       </div>
       <button
