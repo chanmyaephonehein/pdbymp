@@ -43,7 +43,7 @@ const Home = () => {
             </p>
           </div>
           <div className="flex justify-center">
-            <p className="text-lg w-5/6">
+            <p className="text-lg text-gray-700 w-5/6">
               At AI-Solution, our mission is to transform complex challenges
               into opportunities through cutting-edge AI technology. We empower
               businesses to innovate, optimize, and lead in their industries
