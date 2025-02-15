@@ -7,6 +7,7 @@ const Solutions = () => {
       header: "Education",
       data: [
         {
+          id: 1,
           title: "AI-Powered Learning Management System",
           content:
             "Personalize learning experiences with adaptive AI that tracks student progress and recommends tailored resources.",
@@ -18,6 +19,7 @@ const Solutions = () => {
           button: "Transform your classroom →",
         },
         {
+          id: 2,
           title: "Automated Grading Assistant",
           content:
             "Save teachers hours with AI that grades assignments, provides feedback, and identifies learning gaps.",
@@ -33,6 +35,7 @@ const Solutions = () => {
       header: "Finance",
       data: [
         {
+          id: 3,
           title: "Fraud Detection AI",
           content:
             "Protect your assets with real-time fraud detection that identifies suspicious transactions with 99% accuracy.",
@@ -43,6 +46,7 @@ const Solutions = () => {
           button: "Secure Your Systems →",
         },
         {
+          id: 4,
           title: "AI-Driven Investment Advisor",
           content:
             "Maximize returns with predictive analytics that forecast market trends and optimize portfolios.",
@@ -58,6 +62,7 @@ const Solutions = () => {
       header: "Health Care",
       data: [
         {
+          id: 5,
           title: "AI-Powered Diagnostic Assistant",
           content:
             "Reduce diagnostic errors by 50% with AI that analyzes medical images and patient history.",
@@ -68,6 +73,7 @@ const Solutions = () => {
           button: "Enhance Patient Care →",
         },
         {
+          id: 6,
           title: "Patient Flow Optimization",
           content:
             "Reduce wait times and improve hospital efficiency with AI that predicts patient admissions and staff needs.    ",
@@ -83,6 +89,7 @@ const Solutions = () => {
       header: "Governmment",
       data: [
         {
+          id: 7,
           title: "Citizen Service Chatbot",
           content:
             "Streamline public services with an AI chatbot that answers citizen queries 24/7, reducing call center loads by 50%.",
@@ -93,6 +100,7 @@ const Solutions = () => {
           button: "Enhance Citizen Experience →",
         },
         {
+          id: 8,
           title: "AI for Public Safety",
           content:
             "Predict and prevent incidents with AI that analyzes crime data and optimizes resource allocation. ",
@@ -116,11 +124,12 @@ const Solutions = () => {
           <div className="flex justify-center gap-24">
             {item.data.map((itm, index) => (
               <SolutionCard
-                key={index}
+                key={item.id}
                 title={itm.title}
                 content={itm.content}
                 list={itm.list}
                 button={itm.button}
+                route={itm.id}
               />
             ))}
           </div>

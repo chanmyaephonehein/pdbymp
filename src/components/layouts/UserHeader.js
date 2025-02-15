@@ -15,40 +15,40 @@ const UserHeader = () => {
         { name: "All Solutions", link: "/user/solutions" },
         {
           name: "Automated Grading Assistant",
-          link: "/user/solutions/grading",
+          link: "/user/solutions/1",
         },
-        { name: "Learning Management System", link: "/user/solutions/lms" },
-        { name: "Fraud Detection AI", link: "/user/solutions/fraud" },
+        { name: "Learning Management System", link: "/user/solutions/2" },
+        { name: "Fraud Detection AI", link: "/user/solutions/3" },
         {
           name: "AI-Driven Investment Advisor",
-          link: "/user/solutions/investment",
+          link: "/user/solutions/4",
         },
         {
           name: "AI-Powered Diagnostic Assistant",
-          link: "/user/solutions/diagnostic",
+          link: "/user/solutions/5",
         },
         {
           name: "Patient Flow Optimization",
-          link: "/user/solutions/patient-flow",
+          link: "/user/solutions/6",
         },
-        { name: "Citizen Service Chatbot", link: "/user/solutions/chatbot" },
-        { name: "AI for Public Safety", link: "/user/solutions/safety" },
+        { name: "Citizen Service Chatbot", link: "/user/solutions/7" },
+        { name: "AI for Public Safety", link: "/user/solutions/8" },
       ],
     },
     {
       name: "Industries",
       dropdown: [
-        { name: "Education", link: "/user/industries/education" },
-        { name: "Finance", link: "/user/industries/finance" },
-        { name: "Healthcare", link: "/user/industries/healthcare" },
-        { name: "Government", link: "/user/industries/government" },
+        { name: "Education", link: "/user/industries/1" },
+        { name: "Finance", link: "/user/industries/2" },
+        { name: "Healthcare", link: "/user/industries/3" },
+        { name: "Government", link: "/user/industries/4" },
       ],
     },
     { name: "Feedbacks", link: "/user/feedbacks" },
     { name: "Blog", link: "/user/blog" },
     { name: "Gallery", link: "/user/gallery" },
-    { name: "About Us", link: "/user/about" },
-    { name: "Contact Us", link: "/user/contact" },
+    { name: "About Us", link: "/user/aboutus" },
+    { name: "Contact Us", link: "/user/contactus" },
   ];
 
   // Close dropdown when clicking outside
@@ -76,7 +76,7 @@ const UserHeader = () => {
         <div className="border border-black w-12 h-12 rounded-full"></div>
         <p className="text-black">AI Solutions</p>
       </div>
-      <div ref={dropdownRef} className="relative flex space-x-4 ">
+      <div ref={dropdownRef} className="relative flex space-x-1 ">
         {navBarList.map((item, index) => (
           <div key={index} className="relative">
             {item.dropdown ? (
@@ -99,9 +99,7 @@ const UserHeader = () => {
             ) : (
               // Regular Navigation Links
               <button
-                onClick={() => {
-                  router.push({ pathname: `${item.link}` });
-                }}
+                onClick={() => router.push({ pathname: `${item.link}` })}
                 className="px-4 py-2 text-gray-700 hover:text-blue-400"
               >
                 {item.name}
@@ -115,7 +113,10 @@ const UserHeader = () => {
                   {item.dropdown.map((subItem, subIndex) => (
                     <li key={subIndex}>
                       <a
-                        href={subItem.link}
+                        onClick={() => {
+                          router.push({ pathname: `${subItem.link}` });
+                          setOpenDropdown(null);
+                        }}
                         className="block px-4 py-2 hover:bg-gray-100 cursor-pointer text-gray-700"
                       >
                         {subItem.name}
