@@ -6,7 +6,7 @@ const IndustryImgCard = ({ source, title, route }) => {
   return (
     <div
       onClick={() => router.push({ pathname: `${route}` })}
-      className="bg-gray-900 rounded-lg p-4 cursor-pointer"
+      className="bg-gray-700 rounded-lg p-4 cursor-pointer"
     >
       <img src={source} className="w-full rounded-lg" alt={title} />
       <div className="flex justify-center mt-2">
