@@ -28,7 +28,7 @@ const EachSolution = () => {
           each student’s needs, tracks progress, and provides real-time insights
           for teachers.
         </p>
-        <img src="/image7.png" className="" />
+        <img src="/image7.png" className="w-1/2 rounded-lg mb-20" />
         <h2 className="text-xl font-bold">Key Features</h2>
         <h3 className="text-lg font-semibold mt-4">For Students 🎓</h3>
         <p className="mt-2">
