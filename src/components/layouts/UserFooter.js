@@ -5,22 +5,22 @@ import { FaPhoneAlt } from "react-icons/fa";
 
 const UserFooter = () => {
   const aboutLinks = [
-    { name: "Who are we", link: "/about" },
-    { name: "Our Services", link: "/services" },
-    { name: "Portfolio", link: "/portfolio" },
-    { name: "Contact Us", link: "/contact" },
-    { name: "Sitemap", link: "/sitemap" },
+    { name: "Who are we", link: "/user/about" },
+    { name: "Our Services", link: "/user/services" },
+    { name: "Portfolio", link: "/user/portfolio" },
+    { name: "Contact Us", link: "/user/contact" },
+    { name: "Sitemap", link: "/user/sitemap" },
   ];
 
   const serviceLinks = [
-    { name: "Learning Management System", link: "/services/lms" },
-    { name: "Automated Grading Assistant", link: "/services/grading" },
-    { name: "Fraud Detection AI", link: "/services/fraud" },
-    { name: "AI-Driven Investment Advisor", link: "/services/investment" },
-    { name: "AI-Powered Diagnostic Assistant", link: "/services/diagnostic" },
-    { name: "Patient Flow Optimization", link: "/services/patient-flow" },
-    { name: "Citizen Service Chatbot", link: "/services/chatbot" },
-    { name: "AI for Public Safety", link: "/services/safety" },
+    { name: "Learning Management System", link: "/user/solutions/1" },
+    { name: "Automated Grading Assistant", link: "/user/solutions/2" },
+    { name: "Fraud Detection AI", link: "/user/solutions/3" },
+    { name: "AI-Driven Investment Advisor", link: "/user/solutions/4" },
+    { name: "AI-Powered Diagnostic Assistant", link: "/user/solutions/5" },
+    { name: "Patient Flow Optimization", link: "/user/solutions/6" },
+    { name: "Citizen Service Chatbot", link: "/user/solutions/7" },
+    { name: "AI for Public Safety", link: "/user/solutions/8" },
   ];
 
   return (
