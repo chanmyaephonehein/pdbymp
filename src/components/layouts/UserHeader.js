@@ -14,10 +14,10 @@ const UserHeader = () => {
       dropdown: [
         { name: "All Solutions", link: "/user/solutions" },
         {
-          name: "Automated Grading Assistant",
+          name: "Learning Management System",
           link: "/user/solutions/1",
         },
-        { name: "Learning Management System", link: "/user/solutions/2" },
+        { name: "Automated Grading Assistant", link: "/user/solutions/2" },
         { name: "Fraud Detection AI", link: "/user/solutions/3" },
         {
           name: "AI-Driven Investment Advisor",
