@@ -56,7 +56,7 @@ const Home = () => {
       <p className="mt-20 mb-10 text-3xl font-semibold">
         Solutions By Industies
       </p>
-      <div className="flex gap-10">
+      <div className="flex gap-10 mb-10">
         {images.map((item) => (
           <IndustryImgCard
             key={item.id}

@@ -67,15 +67,15 @@ const UserHeader = () => {
   }, []);
 
   return (
-    <nav className="flex flex-row justify-between bg-gray-100 px-10 py-4">
+    <nav className="flex flex-row justify-between bg-mainColor px-10 py-4 text-white">
       <div
         className="flex gap-3 items-center cursor-pointer"
         onClick={() => {
           router.push({ pathname: "/" });
         }}
       >
-        <div className="border border-black w-12 h-12 rounded-full"></div>
-        <p className="text-black">AI Solutions</p>
+        <img src="/image18.png" className="w-10 rounded-sm" />
+        <p className="">AI Solutions</p>
       </div>
       <div ref={dropdownRef} className="relative flex space-x-1 ">
         {navBarList.map((item, index) => (
@@ -86,14 +86,14 @@ const UserHeader = () => {
                 onClick={() =>
                   setOpenDropdown(openDropdown === item.name ? null : item.name)
                 }
-                className="flex items-center px-4 py-2 text-gray-700 hover:text-blue-400"
+                className="flex items-center px-4 py-2  hover:text-blue-400"
               >
                 {item.name}
                 <span className="ml-2 transition-transform duration-300">
                   {openDropdown === item.name ? (
-                    <FiChevronUp className="text-gray-700" />
+                    <FiChevronUp className="" />
                   ) : (
-                    <FiChevronDown className="text-gray-700" />
+                    <FiChevronDown className="" />
                   )}
                 </span>
               </button>
@@ -101,7 +101,7 @@ const UserHeader = () => {
               // Regular Navigation Links
               <button
                 onClick={() => router.push({ pathname: `${item.link}` })}
-                className="px-4 py-2 text-gray-700 hover:text-blue-400"
+                className="px-4 py-2  hover:text-blue-400"
               >
                 {item.name}
               </button>

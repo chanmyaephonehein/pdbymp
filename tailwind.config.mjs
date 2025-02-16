@@ -10,6 +10,9 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        mainColor: "#3C69EA",
+        customBlack: "#1F2022",
+        buttonColor: "#121F46",
       },
     },
   },

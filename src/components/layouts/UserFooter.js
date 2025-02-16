@@ -26,30 +26,31 @@ const UserFooter = () => {
   return (
     <>
       {/* Main Footer Section */}
-      <div className="bg-gray-400 px-10 py-5 flex justify-between">
+      <div className="bg-customBlack px-10 py-5 flex justify-between text-white">
         {/* Left Section */}
         <div id="col-1">
-          <div id="Logo&Company">
-            <span className="text-lg font-semibold">AI Solution</span>
+          <div className="mb-4 flex items-center gap-3">
+            <img src="/image18.png" className="w-10 rounded-sm" />
+            <span className="text-lg font-semibold ">AI Solution</span>
           </div>
-          <p>AI Solution for a Smarter Future</p>
-          <div className="flex gap-3 items-center">
+          <p className="mb-1">AI Solution for a Smarter Future</p>
+          <div className="flex gap-3 items-center mb-1">
             <CiMail />
             <span>theaisolutions@gmail.com</span>
           </div>
-          <div className="flex gap-3 items-center">
+          <div className="flex gap-3 items-center ">
             <FaPhoneAlt />
             <span>+959 250 183 073</span>
           </div>
         </div>
 
         {/* Right Section */}
-        <div className="flex gap-20">
+        <div className="flex gap-40">
           {/* About Us Links */}
           <div id="col-2">
-            <p className="font-semibold">About Us</p>
+            <p className="font-semibold mb-2 text-xl">About Us</p>
             {aboutLinks.map((item, index) => (
-              <p key={index}>
+              <p key={index} className="mb-1">
                 <Link
                   href={item.link}
                   className="hover:text-blue-900 hover:underline"
@@ -62,9 +63,9 @@ const UserFooter = () => {
 
           {/* Our Services Links */}
           <div id="col-3">
-            <p className="font-semibold">Our Services</p>
+            <p className="font-semibold mb-2 text-xl">Our Services</p>
             {serviceLinks.map((item, index) => (
-              <p key={index}>
+              <p key={index} className="mb-1">
                 <Link
                   href={item.link}
                   className="hover:text-blue-900 hover:underline"
@@ -76,9 +77,12 @@ const UserFooter = () => {
           </div>
         </div>
       </div>
+      <div className="">
+        <hr className=" border-gray-300 bg-customBlack " />
+      </div>
 
       {/* Footer Bottom Section */}
-      <div className="flex justify-between px-48 bg-gray-200 py-3">
+      <div className="flex justify-between px-48 bg-customBlack text-white py-3">
         <p>© 2025 AI Solutions</p>
         <p>
           All kinds of solutions available for every business website design
