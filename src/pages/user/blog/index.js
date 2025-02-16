@@ -9,7 +9,7 @@ const blog = [
       "The Future of Work: How AI is Transforming the Digital Employee Experience",
     content:
       "Explore how AI-powered tools are revolutionizing the workplace, from automating repetitive tasks to enhancing employee productivity. Learn how AI-Solutions is leading the charge in creating smarter, more efficient work environments.",
-    route: "/",
+    route: "/user/blog/1",
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ const blog = [
     title: "AI in Action: Real-World Applications Across Industries",
     content:
       "From healthcare to finance, discover how AI-Solutions is helping businesses across sectors leverage AI to solve complex challenges. This article showcases case studies and success stories from our clients.",
-    route: "/",
+    route: "/user/blog/2",
   },
   {
     id: 3,
@@ -25,7 +25,7 @@ const blog = [
     title: "Prototyping with AI: Faster, Smarter, and More Affordable",
     content:
       "Learn how AI-Solutions is changing the game in prototyping with AI-driven tools that reduce costs and speed up innovation. This blog post highlights the benefits of AI-based prototyping for startups and enterprises alike.",
-    route: "/",
+    route: "/user/blog/3",
   },
   {
     id: 4,
@@ -34,7 +34,7 @@ const blog = [
       "AI for Good: How Technology is Enhancing the Digital Employee Experience",
     content:
       "Explore how AI is being used to create a positive impact in the workplace. Discover how AI-Solutions is helping organizations prioritize employee well-being while boosting productivity.",
-    route: "/",
+    route: "/user/blog/4",
   },
 ];
 const Blog = () => {

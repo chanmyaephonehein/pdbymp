@@ -17,6 +17,7 @@ const Solutions = () => {
             "Integration with existing school software (e.g., Google Classroom)",
           ],
           button: "Transform your classroom →",
+          route: "/user/solutions/1",
         },
         {
           id: 2,
@@ -28,6 +29,7 @@ const Solutions = () => {
             "Plagiarism detection for academic integrity.",
           ],
           button: "See How it works →",
+          route: "/user/solutions/2",
         },
       ],
     },
@@ -44,6 +46,7 @@ const Solutions = () => {
             "Reduces false positives by 40%.",
           ],
           button: "Secure Your Systems →",
+          route: "/user/solutions/3",
         },
         {
           id: 4,
@@ -55,6 +58,7 @@ const Solutions = () => {
             "Compliance with FINRA and SEC regulations.",
           ],
           button: "Boost Your ROI →",
+          route: "/user/solutions/4",
         },
       ],
     },
@@ -71,6 +75,7 @@ const Solutions = () => {
             "HIPAA-compliant data security.",
           ],
           button: "Enhance Patient Care →",
+          route: "/user/solutions/5",
         },
         {
           id: 6,
@@ -82,6 +87,7 @@ const Solutions = () => {
             "Integration with EHR systems (e.g., Epic, Cerner)",
           ],
           button: "Optimize Your Operations →",
+          route: "/user/solutions/6",
         },
       ],
     },
@@ -98,6 +104,7 @@ const Solutions = () => {
             "Integration with government databases.",
           ],
           button: "Enhance Citizen Experience →",
+          route: "/user/solutions/7",
         },
         {
           id: 8,
@@ -109,6 +116,7 @@ const Solutions = () => {
             "GDPR-compliant data handling.",
           ],
           button: "Improve Public Safety →",
+          route: "/user/solutions/8",
         },
       ],
     },
@@ -129,7 +137,7 @@ const Solutions = () => {
                 content={itm.content}
                 list={itm.list}
                 button={itm.button}
-                route={itm.id}
+                route={itm.route}
               />
             ))}
           </div>

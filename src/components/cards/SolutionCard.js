@@ -20,7 +20,7 @@ const SolutionCard = ({ title, content, list, button, route }) => {
         </ul>
       </div>
       <button
-        onClick={() => router.push({ pathname: `/user/solutions/${route}` })}
+        onClick={() => router.push({ pathname: `${route}` })}
         className="bg-gray-700 p-3 text-white rounded-md hover:bg-gray-900"
       >
         {button}

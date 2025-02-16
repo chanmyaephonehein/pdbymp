@@ -5,24 +5,28 @@ const industries = [
   {
     id: 1,
     title: "Education",
+    route: "/user/industries/1",
     content:
       "AI-Solutions empowers educational institutions with cutting-edge tools to enhance learning experiences and streamline administrative processes. From AI-driven student performance analytics to virtual classroom assistants, we help schools and universities innovate for the future.",
   },
   {
     id: 2,
     title: "Finance",
+    route: "/user/industries/2",
     content:
       "AI-Solutions transforms the finance sector with secure, AI-driven tools for fraud detection, risk assessment, and customer service automation. Our solutions help financial institutions stay ahead in a competitive, data-driven market.",
   },
   {
     id: 3,
     title: "Healthcare",
+    route: "/user/industries/3",
     content:
       "Our AI-powered solutions revolutionize healthcare by improving patient care and operational efficiency. From predictive diagnostics to intelligent patient management systems, we enable healthcare providers to deliver faster, more accurate services.",
   },
   {
     id: 4,
     title: "Government",
+    route: "/user/industries/4",
     content:
       "We support government agencies with AI tools that enhance public service delivery and decision-making. From smart city initiatives to predictive analytics for policy planning, our solutions drive efficiency and transparency in governance.",
   },
@@ -50,6 +54,7 @@ const Industries = () => {
             title={item.title}
             content={item.content}
             button="Read more"
+            route={item.route}
           />
         ))}
       </div>

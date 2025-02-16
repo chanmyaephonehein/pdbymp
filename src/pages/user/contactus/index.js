@@ -14,7 +14,8 @@ const ContactUs = () => {
         </div>
 
         {/* Right Section (Form) */}
-        <div className="w-1/2 bg-gray-100 p-6 rounded-lg">
+
+        <div className="w-1/3 bg-gray-100 p-6 rounded-lg mx-auto">
           <form>
             <label className="block text-sm font-medium">Name</label>
             <input type="text" className="w-full p-2 mb-3 border rounded-md" />
