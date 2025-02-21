@@ -9,7 +9,7 @@ const UserLayout = (props) => {
   return (
     <>
       <UserHeader />
-      <div className={isContactUs ? "" : "px-24 py-8"}>{props.children}</div>
+      <div className="my-10">{props.children}</div>
       <UserFooter />
     </>
   );
