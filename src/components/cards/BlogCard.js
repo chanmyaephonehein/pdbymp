@@ -7,14 +7,14 @@ const BlogCard = ({ url, title, content, route }) => {
   return (
     <div className="w-full max-w-sm p-4 bg-white rounded-lg shadow-lg md:max-w-md lg:max-w-lg">
       <img
-        src={image}
+        src={url}
         alt={title}
         className="w-full h-48 object-cover rounded-md"
       />
       <h2 className="mt-4 text-lg font-semibold text-gray-800 sm:text-xl">
         {title}
       </h2>
-      <p className="mt-2 text-sm text-gray-600 sm:text-base">{description}</p>
+      <p className="mt-2 text-sm text-gray-600 sm:text-base">{content}</p>
       <div>
         <button
           className="text-md hover:underline"
