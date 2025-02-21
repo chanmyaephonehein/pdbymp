@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import IndustryImgCard from "@/components/cards/IndustryImgCard";
 import SolutionCard from "@/components/cards/SolutionCard";
 
@@ -10,7 +11,7 @@ const images = [
   },
   {
     id: 2,
-    title: "Finance  ",
+    title: "Finance",
     url: "/image3.png",
     route: "/user/industries/1",
   },
@@ -29,10 +30,13 @@ const images = [
 ];
 
 const Home = () => {
+  const router = useRouter();
+
   return (
     <div className="flex flex-col items-center px-4 md:px-8 lg:px-16">
       <img
         src="/image20.png"
+        alt="Hero Image"
         className="w-full max-w-lg rounded-lg mb-10 md:mb-20"
       />
       <div className="flex flex-col md:flex-row gap-4 items-center">
@@ -55,19 +59,24 @@ const Home = () => {
             </p>
           </div>
         </div>
-        <img src="/image1.png" className="w-3/4 md:w-1/3 rounded-lg" />
+        <img
+          src="/image1.png"
+          alt="AI Illustration"
+          className="w-3/4 md:w-1/3 rounded-lg"
+        />
       </div>
       <p className="mt-10 md:mt-20 mb-6 md:mb-10 text-2xl md:text-3xl font-semibold">
         Solutions By Industries
       </p>
       <div className="flex gap-4 md:gap-10 mb-10 flex-wrap justify-center">
         {images.map((item) => (
-          <IndustryImgCard
+          <div
             key={item.id}
-            source={item.url}
-            title={item.title}
-            route={item.route}
-          />
+            className="cursor-pointer"
+            onClick={() => router.push(item.route)}
+          >
+            <IndustryImgCard source={item.url} title={item.title} />
+          </div>
         ))}
       </div>
     </div>

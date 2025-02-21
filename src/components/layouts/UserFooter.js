@@ -26,28 +26,28 @@ const UserFooter = () => {
   return (
     <>
       {/* Main Footer Section */}
-      <div className="bg-customBlack px-10 py-5 flex justify-between text-white">
+      <div className="bg-customBlack px-6 py-5 flex flex-col md:flex-row justify-between text-white">
         {/* Left Section */}
-        <div id="col-1">
+        <div className="mb-6 md:mb-0">
           <div className="mb-4 flex items-center gap-3">
-            <img src="/image18.png" className="w-10 rounded-sm" />
-            <span className="text-lg font-semibold ">AI Solution</span>
+            <img src="/image18.png" className="w-10 rounded-sm" alt="Logo" />
+            <span className="text-lg font-semibold">AI Solution</span>
           </div>
           <p className="mb-1">AI Solution for a Smarter Future</p>
           <div className="flex gap-3 items-center mb-1">
             <CiMail />
             <span>theaisolutions@gmail.com</span>
           </div>
-          <div className="flex gap-3 items-center ">
+          <div className="flex gap-3 items-center">
             <FaPhoneAlt />
             <span>+959 250 183 073</span>
           </div>
         </div>
 
         {/* Right Section */}
-        <div className="flex gap-40">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-1">
           {/* About Us Links */}
-          <div id="col-2">
+          <div>
             <p className="font-semibold mb-2 text-xl">About Us</p>
             {aboutLinks.map((item, index) => (
               <p key={index} className="mb-1">
@@ -62,7 +62,7 @@ const UserFooter = () => {
           </div>
 
           {/* Our Services Links */}
-          <div id="col-3">
+          <div>
             <p className="font-semibold mb-2 text-xl">Our Services</p>
             {serviceLinks.map((item, index) => (
               <p key={index} className="mb-1">
@@ -77,12 +77,11 @@ const UserFooter = () => {
           </div>
         </div>
       </div>
-      <div className="">
-        <hr className=" border-gray-300 bg-customBlack " />
-      </div>
+
+      <hr className="border-gray-300 bg-customBlack" />
 
       {/* Footer Bottom Section */}
-      <div className="flex justify-between px-48 bg-customBlack text-white py-3">
+      <div className="flex flex-col md:flex-row justify-between px-6 md:px-20 bg-customBlack text-white py-3 text-center md:text-left">
         <p>© 2025 AI Solutions</p>
         <p>
           All kinds of solutions available for every business website design

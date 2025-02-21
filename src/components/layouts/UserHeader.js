@@ -1,41 +1,6 @@
-import IndustryImgCard from "@/components/cards/IndustryImgCard";
-import SolutionCard from "@/components/cards/SolutionCard";
 import { useRouter } from "next/router";
 import React, { useState, useRef, useEffect } from "react";
 import { FiChevronDown, FiChevronUp, FiMenu, FiX } from "react-icons/fi";
-
-const navBarList = [
-  { name: "Home", link: "/" },
-  {
-    name: "Solutions",
-    dropdown: [
-      { name: "All Solutions", link: "/user/solutions" },
-      { name: "Learning Management System", link: "/user/solutions/1" },
-      { name: "Automated Grading Assistant", link: "/user/solutions/2" },
-      { name: "Fraud Detection AI", link: "/user/solutions/3" },
-      { name: "AI-Driven Investment Advisor", link: "/user/solutions/4" },
-      { name: "AI-Powered Diagnostic Assistant", link: "/user/solutions/5" },
-      { name: "Patient Flow Optimization", link: "/user/solutions/6" },
-      { name: "Citizen Service Chatbot", link: "/user/solutions/7" },
-      { name: "AI for Public Safety", link: "/user/solutions/8" },
-    ],
-  },
-  {
-    name: "Industries",
-    dropdown: [
-      { name: "All Industries", link: "/user/industries" },
-      { name: "Education", link: "/user/industries/1" },
-      { name: "Finance", link: "/user/industries/2" },
-      { name: "Healthcare", link: "/user/industries/3" },
-      { name: "Government", link: "/user/industries/4" },
-    ],
-  },
-  { name: "Feedbacks", link: "/user/feedbacks" },
-  { name: "Blog", link: "/user/blog" },
-  { name: "Gallery", link: "/user/gallery" },
-  { name: "About Us", link: "/user/aboutus" },
-  { name: "Contact Us", link: "/user/contactus" },
-];
 
 const UserHeader = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -43,12 +8,46 @@ const UserHeader = () => {
   const dropdownRef = useRef(null);
   const router = useRouter();
 
+  const navBarList = [
+    { name: "Home", link: "/" },
+    {
+      name: "Solutions",
+      dropdown: [
+        { name: "All Solutions", link: "/user/solutions" },
+        { name: "Learning Management System", link: "/user/solutions/1" },
+        { name: "Automated Grading Assistant", link: "/user/solutions/2" },
+        { name: "Fraud Detection AI", link: "/user/solutions/3" },
+        { name: "AI-Driven Investment Advisor", link: "/user/solutions/4" },
+        { name: "AI-Powered Diagnostic Assistant", link: "/user/solutions/5" },
+        { name: "Patient Flow Optimization", link: "/user/solutions/6" },
+        { name: "Citizen Service Chatbot", link: "/user/solutions/7" },
+        { name: "AI for Public Safety", link: "/user/solutions/8" },
+      ],
+    },
+    {
+      name: "Industries",
+      dropdown: [
+        { name: "All Industries", link: "/user/industries" },
+        { name: "Education", link: "/user/industries/1" },
+        { name: "Finance", link: "/user/industries/2" },
+        { name: "Healthcare", link: "/user/industries/3" },
+        { name: "Government", link: "/user/industries/4" },
+      ],
+    },
+    { name: "Feedbacks", link: "/user/feedbacks" },
+    { name: "Blog", link: "/user/blog" },
+    { name: "Gallery", link: "/user/gallery" },
+    { name: "About Us", link: "/user/aboutus" },
+    { name: "Contact Us", link: "/user/contactus" },
+  ];
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setOpenDropdown(null);
       }
     };
+
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
@@ -56,27 +55,24 @@ const UserHeader = () => {
   }, []);
 
   return (
-    <nav className="container mx-auto w-full max-w-screen-xl flex justify-between items-center bg-mainColor px-6 py-4 text-white relative overflow-hidden">
+    <nav className="bg-gray-100 px-6 py-4 flex justify-between items-center">
       <div
-        className="flex items-center gap-3 cursor-pointer"
+        className="flex gap-3 items-center cursor-pointer"
         onClick={() => router.push("/")}
       >
-        <img
-          src="/image18.png"
-          className="w-10 rounded-sm"
-          alt="AI Solutions Logo"
-        />
-        <p className="hidden sm:block">AI Solutions</p>
+        <div className="border border-black w-12 h-12 rounded-full"></div>
+        <p className="text-black">AI Solutions</p>
       </div>
 
-      <button
-        className="sm:hidden text-white text-2xl"
-        onClick={() => setIsDrawerOpen(true)}
-      >
-        <FiMenu />
-      </button>
+      {/* Mobile & Tablet View - Drawer */}
+      <div className="md:hidden">
+        <button onClick={() => setIsDrawerOpen(!isDrawerOpen)}>
+          {isDrawerOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+        </button>
+      </div>
 
-      <div ref={dropdownRef} className="hidden sm:flex space-x-4">
+      {/* Desktop View */}
+      <div ref={dropdownRef} className="hidden md:flex space-x-4">
         {navBarList.map((item, index) => (
           <div key={index} className="relative">
             {item.dropdown ? (
@@ -84,10 +80,10 @@ const UserHeader = () => {
                 onClick={() =>
                   setOpenDropdown(openDropdown === item.name ? null : item.name)
                 }
-                className="flex items-center px-4 py-2 hover:text-blue-400"
+                className="flex items-center px-4 py-2 text-gray-700 hover:text-blue-400"
               >
                 {item.name}
-                <span className="ml-2">
+                <span className="ml-2 transition-transform duration-300">
                   {openDropdown === item.name ? (
                     <FiChevronUp />
                   ) : (
@@ -98,70 +94,95 @@ const UserHeader = () => {
             ) : (
               <button
                 onClick={() => router.push(item.link)}
-                className="px-4 py-2 hover:text-blue-400"
+                className="px-4 py-2 text-gray-700 hover:text-blue-400"
               >
                 {item.name}
               </button>
+            )}
+
+            {openDropdown === item.name && item.dropdown && (
+              <div className="absolute left-0 mt-2 w-64 bg-white border rounded-md shadow-md">
+                <ul className="py-2">
+                  {item.dropdown.map((subItem, subIndex) => (
+                    <li key={subIndex}>
+                      <a
+                        onClick={() => {
+                          router.push(subItem.link);
+                          setOpenDropdown(null);
+                        }}
+                        className="block px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                      >
+                        {subItem.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             )}
           </div>
         ))}
       </div>
 
+      {/* Drawer Menu */}
       {isDrawerOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-end">
-          <div className="w-72 h-full bg-white text-black shadow-lg p-6 flex flex-col">
-            <button
-              className="self-end text-2xl"
-              onClick={() => setIsDrawerOpen(false)}
-            >
-              <FiX />
+          <div className="bg-white w-64 h-full p-5 overflow-y-auto">
+            <button className="mb-4" onClick={() => setIsDrawerOpen(false)}>
+              <FiX size={24} />
             </button>
-            <ul className="mt-6 w-full">
-              {navBarList.map((item, index) => (
-                <li key={index} className="py-2 border-b w-full">
-                  {item.dropdown ? (
-                    <div>
-                      <button
-                        onClick={() =>
-                          setOpenDropdown(
-                            openDropdown === item.name ? null : item.name
-                          )
-                        }
-                        className="flex justify-between w-full px-4 py-2 hover:text-blue-400"
-                      >
-                        {item.name}
+            {navBarList.map((item, index) => (
+              <div key={index} className="mb-4">
+                {item.dropdown ? (
+                  <div>
+                    <button
+                      onClick={() =>
+                        setOpenDropdown(
+                          openDropdown === item.name ? null : item.name
+                        )
+                      }
+                      className="flex items-center w-full text-left p-2 text-gray-700"
+                    >
+                      {item.name}
+                      <span className="ml-auto">
                         {openDropdown === item.name ? (
                           <FiChevronUp />
                         ) : (
                           <FiChevronDown />
                         )}
-                      </button>
-                      {openDropdown === item.name && (
-                        <ul className="pl-4 mt-2">
-                          {item.dropdown.map((subItem, subIndex) => (
-                            <li key={subIndex} className="py-1">
-                              <button
-                                onClick={() => router.push(subItem.link)}
-                                className="block w-full text-left hover:text-blue-400"
-                              >
-                                {subItem.name}
-                              </button>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </div>
-                  ) : (
-                    <button
-                      onClick={() => router.push(item.link)}
-                      className="block w-full px-4 py-2 text-left hover:text-blue-400"
-                    >
-                      {item.name}
+                      </span>
                     </button>
-                  )}
-                </li>
-              ))}
-            </ul>
+                    {openDropdown === item.name && (
+                      <ul className="pl-4">
+                        {item.dropdown.map((subItem, subIndex) => (
+                          <li key={subIndex}>
+                            <a
+                              onClick={() => {
+                                router.push(subItem.link);
+                                setOpenDropdown(null);
+                                setIsDrawerOpen(false);
+                              }}
+                              className="block p-2 hover:bg-gray-100 cursor-pointer"
+                            >
+                              {subItem.name}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                ) : (
+                  <button
+                    onClick={() => {
+                      router.push(item.link);
+                      setIsDrawerOpen(false);
+                    }}
+                    className="block w-full text-left p-2 text-gray-700 hover:bg-gray-100"
+                  >
+                    {item.name}
+                  </button>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       )}
