@@ -173,19 +173,35 @@ const UserHeader = () => {
                     <ul className="pl-4">
                       {item.dropdown.map((subItem, subIndex) => (
                         <li key={subIndex}>
-                          <button
-                            onMouseDown={(e) => {
-                              e.preventDefault();
-                              router.push(subItem.link);
-                              setTimeout(() => {
-                                setOpenDropdown(null);
-                                setIsDrawerOpen(false);
-                              }, 100);
-                            }}
-                            className="block p-2 hover:bg-gray-100 cursor-pointer text-left w-full"
-                          >
-                            {subItem.name}
-                          </button>
+                          {" "}
+                          {subIndex === 1 || subIndex === 0 ? (
+                            <button
+                              onMouseDown={(e) => {
+                                e.preventDefault();
+                                router.push(subItem.link);
+                                setTimeout(() => {
+                                  setOpenDropdown(null);
+                                  setIsDrawerOpen(false);
+                                }, 100);
+                              }}
+                              className="block p-2 hover:bg-gray-100 cursor-pointer text-left w-full"
+                            >
+                              {subItem.name}
+                            </button>
+                          ) : (
+                            <button
+                              onMouseDown={(e) => {
+                                e.preventDefault();
+                                setTimeout(() => {
+                                  setOpenDropdown(null);
+                                  setIsDrawerOpen(false);
+                                }, 100);
+                              }}
+                              className="block p-2 hover:bg-gray-100 cursor-pointer text-left w-full"
+                            >
+                              {subItem.name}
+                            </button>
+                          )}
                         </li>
                       ))}
                     </ul>
