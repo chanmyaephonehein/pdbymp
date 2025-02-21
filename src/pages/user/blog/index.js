@@ -39,13 +39,15 @@ const blog = [
 ];
 const Blog = () => {
   return (
-    <div className="flex flex-col items-center">
-      <p className="text-2xl font-semibold">Insights & Innovations</p>
-      <p className="text-xl text-gray-700 mt-3 mb-10">
+    <div className="flex flex-col items-center px-4 sm:px-8 md:px-16 lg:px-24">
+      <p className="text-2xl sm:text-3xl md:text-4xl font-semibold text-center">
+        Insights & Innovations
+      </p>
+      <p className="text-lg sm:text-xl text-gray-700 mt-3 mb-10 text-center">
         Stay ahead with the latest trends, case studies, and thought leadership
         from AI-Solutions.
       </p>
-      <div className="flex gap-10 justify-center flex-wrap">
+      <div className="flex flex-wrap justify-center gap-6 sm:gap-8 md:gap-12 lg:gap-14">
         {blog.map((item) => (
           <BlogCard
             key={item.id}

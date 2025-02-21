@@ -17,7 +17,7 @@ const BlogCard = ({ url, title, content, route }) => {
       <p className="mt-2 text-sm text-gray-600 sm:text-base">{content}</p>
       <div>
         <button
-          className="text-md hover:underline"
+          className="text-md mt-5 underline hover:text-blue-600"
           onClick={() => router.push({ pathname: `${route}` })}
         >
           Read post
