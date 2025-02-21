@@ -2,7 +2,7 @@ import React from "react";
 
 const Aboutus = () => {
   return (
-    <div className="max-w-3xl mx-auto text-center py-10 px-4">
+    <div className="max-w-3xl mx-auto text-center  px-4">
       <h1 className="text-2xl font-bold mb-2">
         Pioneering the Future of Work with AI
       </h1>

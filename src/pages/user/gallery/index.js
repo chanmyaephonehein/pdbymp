@@ -26,8 +26,10 @@ const Gallery = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen items-center">
-      <p className="text-2xl font-semibold mb-10">Exploring AI Solution</p>
+    <div className="flex flex-col items-center px-4 sm:px-8 md:px-16 lg:px-24 ">
+      <p className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-10 text-center">
+        Exploring AI Solution
+      </p>
       <div className="flex items-center space-x-4">
         {startIndex > 0 && (
           <button className="p-2 bg-gray-300 rounded-full" onClick={handlePrev}>
@@ -40,8 +42,8 @@ const Gallery = () => {
               key={image.id}
               src={image.url}
               alt={`Slide ${image.id}`}
-              className={`rounded-lg transition-all duration-300 ${
-                index === 1 ? "w-96 h-96" : "w-64 h-64"
+              className={`rounded-lg transition-all duration-300 w-24 sm:w-32 md:w-48 lg:w-64 h-auto ${
+                index === 1 ? "scale-110" : ""
               }`}
             />
           ))}
