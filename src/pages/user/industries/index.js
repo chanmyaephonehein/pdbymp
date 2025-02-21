@@ -43,11 +43,11 @@ const Industries = () => {
     setCurrentIndex(index);
   };
   return (
-    <div className="flex flex-col">
-      <p className="self-center text-4xl font-semibold mb-8">
+    <div className="flex flex-col items-center px-4 sm:px-8 md:px-16 lg:px-24">
+      <p className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-8 text-center">
         The Industries We Provide
       </p>
-      <div className=" flex justify-center flex-wrap gap-24 mb-20">
+      <div className="flex flex-wrap justify-center gap-6 sm:gap-8 md:gap-12 lg:gap-14 mb-20">
         {industries.map((item) => (
           <SolutionCard
             key={item.id}

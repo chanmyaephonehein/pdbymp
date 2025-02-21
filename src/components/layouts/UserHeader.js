@@ -65,14 +65,14 @@ const UserHeader = () => {
       </div>
 
       {/* Mobile & Tablet View - Drawer */}
-      <div className="md:hidden">
+      <div className="lg:hidden">
         <button onClick={() => setIsDrawerOpen(!isDrawerOpen)}>
           {isDrawerOpen ? <FiX size={24} /> : <FiMenu size={24} />}
         </button>
       </div>
 
       {/* Desktop View */}
-      <div ref={dropdownRef} className="hidden md:flex space-x-4">
+      <div ref={dropdownRef} className="hidden lg:flex space-x-4">
         {navBarList.map((item, index) => (
           <div key={index} className="relative">
             {item.dropdown ? (

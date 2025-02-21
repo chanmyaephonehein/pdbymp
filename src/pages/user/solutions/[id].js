@@ -18,7 +18,7 @@ const EachSolution = () => {
 
   return (
     <div className="flex justify-center">
-      <div className="flex justify-center flex-col items-center text-center p-6 w-2/3">
+      <div className="flex justify-center flex-col items-center text-center md:p-6 w-2/3">
         <p className="text-3xl font-semibold">{getTitle?.title}</p>
         <p className="text-lg mt-6">
           Transform Your Classroom with AI-Driven Personalization!

@@ -122,17 +122,19 @@ const Solutions = () => {
     },
   ];
   return (
-    <div className="flex flex-col">
-      <p className="self-center text-4xl font-semibold mb-8">
+    <div className="flex flex-col items-center px-4 sm:px-8 md:px-16 lg:px-24">
+      <p className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-8 text-center">
         AI-Driven Software Solutions for Smarter Business Outcomes
       </p>
       {solutionsType.map((item, index) => (
-        <div key={index} className="flex flex-col gap-1 mb-10">
-          <p className="ml-24 text-2xl font-bold">{item.header}</p>
-          <div className="flex justify-center flex-wrap gap-24">
-            {item.data.map((itm, index) => (
+        <div key={index} className="flex flex-col gap-3 mb-10 w-full">
+          <p className="text-xl sm:text-2xl font-bold text-center md:text-left">
+            {item.header}
+          </p>
+          <div className="flex flex-wrap justify-center gap-6 sm:gap-8 md:gap-12 lg:gap-14">
+            {item.data.map((itm, idx) => (
               <SolutionCard
-                key={item.id}
+                key={itm.id}
                 title={itm.title}
                 content={itm.content}
                 list={itm.list}
