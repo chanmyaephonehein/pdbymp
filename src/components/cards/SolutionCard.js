@@ -1,8 +1,9 @@
 import { useRouter } from "next/router";
 import React from "react";
 
-const SolutionCard = ({ title, content, list, button, route }) => {
+const SolutionCard = ({ title, content, list, button, route, id }) => {
   const router = useRouter();
+
   return (
     <div className="rounded-lg shadow-lg w-full sm:w-4/5 md:w-2/3 lg:w-1/3 h-auto flex flex-col items-center justify-between px-5 py-6">
       <div className="flex flex-col">
@@ -17,12 +18,18 @@ const SolutionCard = ({ title, content, list, button, route }) => {
             ))}
         </ul>
       </div>
-      <button
-        onClick={() => router.push(route)}
-        className="bg-gray-700 p-3 text-white rounded-md hover:bg-gray-900 mt-4"
-      >
-        {button}
-      </button>
+      {id === 1 ? (
+        <button
+          onClick={() => router.push(route)}
+          className="bg-gray-700 p-3 text-white rounded-md hover:bg-gray-900 mt-4"
+        >
+          {button}
+        </button>
+      ) : (
+        <button className="bg-gray-700 p-3 text-white rounded-md hover:bg-gray-900 mt-4">
+          {button}
+        </button>
+      )}
     </div>
   );
 };

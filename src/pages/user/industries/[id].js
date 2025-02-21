@@ -1,6 +1,10 @@
-import React from "react";
+import { useRouter } from "next/router";
+import React, { useEffect } from "react";
 
 const EachIndustry = () => {
+  const router = useRouter();
+  const queryId = router.query.id;
+
   return (
     <div className="mx-auto px-4 sm:px-8 md:px-16 lg:px-24  text-center">
       <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">

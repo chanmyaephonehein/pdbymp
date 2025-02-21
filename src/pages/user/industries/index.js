@@ -4,18 +4,19 @@ import React, { useState } from "react";
 const industries = [
   {
     id: 1,
-    title: "Education",
-    route: "/user/industries/1",
-    content:
-      "AI-Solutions empowers educational institutions with cutting-edge tools to enhance learning experiences and streamline administrative processes. From AI-driven student performance analytics to virtual classroom assistants, we help schools and universities innovate for the future.",
-  },
-  {
-    id: 2,
     title: "Finance",
-    route: "/user/industries/2",
+    route: "/user/industries/1",
     content:
       "AI-Solutions transforms the finance sector with secure, AI-driven tools for fraud detection, risk assessment, and customer service automation. Our solutions help financial institutions stay ahead in a competitive, data-driven market.",
   },
+  {
+    id: 2,
+    title: "Education",
+    route: "/user/industries/2",
+    content:
+      "AI-Solutions empowers educational institutions with cutting-edge tools to enhance learning experiences and streamline administrative processes. From AI-driven student performance analytics to virtual classroom assistants, we help schools and universities innovate for the future.",
+  },
+
   {
     id: 3,
     title: "Healthcare",
@@ -36,7 +37,7 @@ const Industries = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const images = [
     ["/image5.png", "/image6.png", "/image4.png"],
-    ["/image5.png", "/image6.png", "/image4.png"],
+    ["/image10.png", "/image11.png", "/image12.png"],
   ];
 
   const moveSlide = (index) => {
@@ -55,6 +56,7 @@ const Industries = () => {
             content={item.content}
             button="Read more"
             route={item.route}
+            id={item.id}
           />
         ))}
       </div>

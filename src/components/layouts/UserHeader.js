@@ -28,8 +28,8 @@ const UserHeader = () => {
       name: "Industries",
       dropdown: [
         { name: "All Industries", link: "/user/industries" },
-        { name: "Education", link: "/user/industries/1" },
-        { name: "Finance", link: "/user/industries/2" },
+        { name: "Finance", link: "/user/industries/1" },
+        { name: "Education", link: "/user/industries/2" },
         { name: "Healthcare", link: "/user/industries/3" },
         { name: "Government", link: "/user/industries/4" },
       ],
@@ -107,16 +107,28 @@ const UserHeader = () => {
                 <ul className="py-2">
                   {item.dropdown.map((subItem, subIndex) => (
                     <li key={subIndex}>
-                      <button
-                        onMouseDown={(e) => {
-                          e.preventDefault(); // Ensures touch responsiveness
-                          router.push(subItem.link);
-                          setTimeout(() => setOpenDropdown(null), 100);
-                        }}
-                        className="block px-4 py-2 hover:bg-gray-100 cursor-pointer text-left w-full"
-                      >
-                        {subItem.name}
-                      </button>
+                      {subIndex === 1 || subIndex === 0 ? (
+                        <button
+                          onMouseDown={(e) => {
+                            e.preventDefault(); // Ensures touch responsiveness
+                            router.push(subItem.link);
+                            setTimeout(() => setOpenDropdown(null), 100);
+                          }}
+                          className="block px-4 py-2 hover:bg-gray-100 cursor-pointer text-left w-full"
+                        >
+                          {subItem.name}
+                        </button>
+                      ) : (
+                        <button
+                          onMouseDown={(e) => {
+                            e.preventDefault(); // Ensures touch responsiveness
+                            setTimeout(() => setOpenDropdown(null), 100);
+                          }}
+                          className="block px-4 py-2 hover:bg-gray-100 cursor-pointer text-left w-full"
+                        >
+                          {subItem.name}
+                        </button>
+                      )}
                     </li>
                   ))}
                 </ul>

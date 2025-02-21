@@ -1,14 +1,15 @@
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 const solutions = [
   { id: 1, title: "AI-Powered Learning Management System" },
-  { id: 2, title: "Automated Grading Assistant" },
-  { id: 3, title: "Fraud Detection AI" },
-  { id: 4, title: "AI-Driven Investment Advisor" },
-  { id: 5, title: "AI-Powered Diagnostic Assistant" },
-  { id: 6, title: "Patient Flow Optimization" },
-  { id: 7, title: "Citizen Service Chatbot" },
-  { id: 8, title: "AI for Public Safety" },
+  // { id: 2, title: "Automated Grading Assistant" },
+  // { id: 3, title: "Fraud Detection AI" },
+  // { id: 4, title: "AI-Driven Investment Advisor" },
+  // { id: 5, title: "AI-Powered Diagnostic Assistant" },
+  // { id: 6, title: "Patient Flow Optimization" },
+  // { id: 7, title: "Citizen Service Chatbot" },
+  // { id: 8, title: "AI for Public Safety" },
 ];
 
 const EachSolution = () => {

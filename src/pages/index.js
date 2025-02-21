@@ -5,14 +5,14 @@ import SolutionCard from "@/components/cards/SolutionCard";
 const images = [
   {
     id: 1,
-    title: "Education",
-    url: "/image2.png",
+    title: "Finance",
+    url: "/image3.png",
     route: "/user/industries/1",
   },
   {
     id: 2,
-    title: "Finance",
-    url: "/image3.png",
+    title: "Education",
+    url: "/image2.png",
     route: "/user/industries/1",
   },
   {
@@ -69,15 +69,25 @@ const Home = () => {
         Solutions By Industries
       </p>
       <div className="flex gap-4 md:gap-10 mb-10 flex-wrap justify-center">
-        {images.map((item) => (
-          <div
-            key={item.id}
-            className="cursor-pointer"
-            onClick={() => router.push(item.route)}
-          >
-            <IndustryImgCard source={item.url} title={item.title} />
-          </div>
-        ))}
+        {images.map((item) => {
+          return item.id === 1 ? (
+            <div
+              key={item.id}
+              className="cursor-pointer"
+              onClick={() => router.push(item.route)}
+            >
+              <IndustryImgCard source={item.url} title={item.title} />
+            </div>
+          ) : (
+            <div
+              key={item.id}
+              className="cursor-pointer"
+              // onClick={() => router.push(item.route)}
+            >
+              <IndustryImgCard source={item.url} title={item.title} />
+            </div>
+          );
+        })}
       </div>
     </div>
   );

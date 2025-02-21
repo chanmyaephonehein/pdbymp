@@ -30,6 +30,12 @@ const Gallery = () => {
       <p className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-10 text-center">
         Exploring AI Solution
       </p>
+      <p className="text-center max-w-2xl mb-6">
+        Step into the world of AI-Solutions through our gallery. From
+        groundbreaking product demos to industry events and team collaborations,
+        these snapshots capture our journey of transforming the digital employee
+        experience with AI-powered solutions.
+      </p>
       <div className="flex items-center space-x-4">
         {startIndex > 0 && (
           <button className="p-2 bg-gray-300 rounded-full" onClick={handlePrev}>

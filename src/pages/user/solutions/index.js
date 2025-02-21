@@ -127,8 +127,8 @@ const Solutions = () => {
         AI-Driven Software Solutions for Smarter Business Outcomes
       </p>
       {solutionsType.map((item, index) => (
-        <div key={index} className="flex flex-col gap-3 mb-10 w-full">
-          <p className="text-xl sm:text-2xl font-bold text-center md:text-left">
+        <div key={index} className="flex flex-col gap-2 mt-10 w-full">
+          <p className="text-xl sm:text-2xl font-bold text-center md:text-left md:ml-28 lg:ml-48">
             {item.header}
           </p>
           <div className="flex flex-wrap justify-center gap-6 sm:gap-8 md:gap-12 lg:gap-14">
@@ -140,6 +140,7 @@ const Solutions = () => {
                 list={itm.list}
                 button={itm.button}
                 route={itm.route}
+                id={itm.id}
               />
             ))}
           </div>

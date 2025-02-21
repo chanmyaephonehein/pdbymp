@@ -66,12 +66,18 @@ const UserFooter = () => {
             <p className="font-semibold mb-2 text-xl">Our Services</p>
             {serviceLinks.map((item, index) => (
               <p key={index} className="mb-1">
-                <Link
-                  href={item.link}
-                  className="hover:text-blue-900 hover:underline"
-                >
-                  {item.name}
-                </Link>
+                {index === 0 ? (
+                  <Link
+                    href={item.link}
+                    className="hover:text-blue-900 hover:underline"
+                  >
+                    {item.name}
+                  </Link>
+                ) : (
+                  <span className="hover:text-blue-900 hover:underline cursor-pointer">
+                    {item.name}
+                  </span>
+                )}
               </p>
             ))}
           </div>
