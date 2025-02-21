@@ -56,6 +56,7 @@ const UserHeader = () => {
 
   return (
     <nav className="bg-gray-100 px-6 py-4 flex justify-between items-center">
+      {/* Logo & Branding */}
       <div
         className="flex gap-3 items-center cursor-pointer"
         onClick={() => router.push("/")}
@@ -100,20 +101,22 @@ const UserHeader = () => {
               </button>
             )}
 
+            {/* Dropdown Menu */}
             {openDropdown === item.name && item.dropdown && (
-              <div className="absolute left-0 mt-2 w-64 bg-white border rounded-md shadow-md">
+              <div className="absolute left-0 mt-2 w-64 bg-white border rounded-md shadow-md z-50">
                 <ul className="py-2">
                   {item.dropdown.map((subItem, subIndex) => (
                     <li key={subIndex}>
-                      <a
-                        onClick={() => {
+                      <button
+                        onMouseDown={(e) => {
+                          e.preventDefault(); // Ensures touch responsiveness
                           router.push(subItem.link);
-                          setOpenDropdown(null);
+                          setTimeout(() => setOpenDropdown(null), 100);
                         }}
-                        className="block px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                        className="block px-4 py-2 hover:bg-gray-100 cursor-pointer text-left w-full"
                       >
                         {subItem.name}
-                      </a>
+                      </button>
                     </li>
                   ))}
                 </ul>
@@ -123,69 +126,74 @@ const UserHeader = () => {
         ))}
       </div>
 
-      {/* Drawer Menu */}
-      {isDrawerOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-end">
-          <div className="bg-white w-64 h-full p-5 overflow-y-auto">
-            <button className="mb-4" onClick={() => setIsDrawerOpen(false)}>
-              <FiX size={24} />
-            </button>
-            {navBarList.map((item, index) => (
-              <div key={index} className="mb-4">
-                {item.dropdown ? (
-                  <div>
-                    <button
-                      onClick={() =>
-                        setOpenDropdown(
-                          openDropdown === item.name ? null : item.name
-                        )
-                      }
-                      className="flex items-center w-full text-left p-2 text-gray-700"
-                    >
-                      {item.name}
-                      <span className="ml-auto">
-                        {openDropdown === item.name ? (
-                          <FiChevronUp />
-                        ) : (
-                          <FiChevronDown />
-                        )}
-                      </span>
-                    </button>
-                    {openDropdown === item.name && (
-                      <ul className="pl-4">
-                        {item.dropdown.map((subItem, subIndex) => (
-                          <li key={subIndex}>
-                            <a
-                              onClick={() => {
-                                router.push(subItem.link);
-                                setOpenDropdown(null);
-                                setIsDrawerOpen(false);
-                              }}
-                              className="block p-2 hover:bg-gray-100 cursor-pointer"
-                            >
-                              {subItem.name}
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-                ) : (
+      {/* Mobile Drawer Menu */}
+      <div
+        className={`fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-end transition-transform duration-300 ${
+          isDrawerOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <div className="bg-white w-64 h-full p-5 overflow-y-auto shadow-lg transition-all duration-300">
+          <button className="mb-4" onClick={() => setIsDrawerOpen(false)}>
+            <FiX size={24} />
+          </button>
+          {navBarList.map((item, index) => (
+            <div key={index} className="mb-4">
+              {item.dropdown ? (
+                <div>
                   <button
-                    onClick={() => {
-                      router.push(item.link);
-                      setIsDrawerOpen(false);
-                    }}
-                    className="block w-full text-left p-2 text-gray-700 hover:bg-gray-100"
+                    onClick={() =>
+                      setOpenDropdown(
+                        openDropdown === item.name ? null : item.name
+                      )
+                    }
+                    className="flex items-center w-full text-left p-2 text-gray-700"
                   >
                     {item.name}
+                    <span className="ml-auto">
+                      {openDropdown === item.name ? (
+                        <FiChevronUp />
+                      ) : (
+                        <FiChevronDown />
+                      )}
+                    </span>
                   </button>
-                )}
-              </div>
-            ))}
-          </div>
+                  {openDropdown === item.name && (
+                    <ul className="pl-4">
+                      {item.dropdown.map((subItem, subIndex) => (
+                        <li key={subIndex}>
+                          <button
+                            onMouseDown={(e) => {
+                              e.preventDefault();
+                              router.push(subItem.link);
+                              setTimeout(() => {
+                                setOpenDropdown(null);
+                                setIsDrawerOpen(false);
+                              }, 100);
+                            }}
+                            className="block p-2 hover:bg-gray-100 cursor-pointer text-left w-full"
+                          >
+                            {subItem.name}
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ) : (
+                <button
+                  onClick={() => {
+                    router.push(item.link);
+                    setIsDrawerOpen(false);
+                  }}
+                  className="block w-full text-left p-2 text-gray-700 hover:bg-gray-100"
+                >
+                  {item.name}
+                </button>
+              )}
+            </div>
+          ))}
         </div>
-      )}
+      </div>
     </nav>
   );
 };

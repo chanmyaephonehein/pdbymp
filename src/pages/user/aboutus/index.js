@@ -13,7 +13,7 @@ const Aboutus = () => {
 
       <div className="flex justify-center mb-6">
         <img
-          src="/image7.png"
+          src="/image20.png"
           alt="AI-Solutions"
           className="rounded-lg w-4/5"
         />

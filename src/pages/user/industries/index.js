@@ -35,8 +35,8 @@ const industries = [
 const Industries = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const images = [
-    ["/image7.png", "/image7.png", "/image7.png"],
-    ["/image7.png", "/image7.png", "/image7.png"],
+    ["/image5.png", "/image6.png", "/image4.png"],
+    ["/image5.png", "/image6.png", "/image4.png"],
   ];
 
   const moveSlide = (index) => {
@@ -58,7 +58,7 @@ const Industries = () => {
           />
         ))}
       </div>
-      <p className="text-2xl font-semibold">Our work</p>
+      <p className="text-2xl font-semibold mb-4">Our work</p>
       <div className="overflow-hidden w-full flex justify-center">
         <div
           className="flex transition-transform duration-500"
@@ -71,7 +71,7 @@ const Industries = () => {
                   key={j}
                   src={src}
                   alt={`Image ${i * 3 + j + 1}`}
-                  className="w-1/3 rounded-lg"
+                  className="w-[30%] h-[300px] object-cover rounded-lg flex-shrink-0"
                 />
               ))}
             </div>
