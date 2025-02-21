@@ -55,13 +55,13 @@ const UserHeader = () => {
   }, []);
 
   return (
-    <nav className="bg-gray-100 px-6 py-4 flex justify-between items-center">
+    <nav className=" px-6 py-4 flex justify-between items-center">
       {/* Logo & Branding */}
       <div
         className="flex gap-3 items-center cursor-pointer"
         onClick={() => router.push("/")}
       >
-        <div className="border border-black w-12 h-12 rounded-full"></div>
+        <img src="/image18.png  " className="w-12 h-12" />
         <p className="text-black">AI Solutions</p>
       </div>
 

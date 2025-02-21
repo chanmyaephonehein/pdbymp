@@ -8,7 +8,7 @@ const UserLayout = (props) => {
   const isContactUs = router.pathname.includes("/contactus");
   return (
     <>
-      <UserHeader />
+      <UserHeader /> <hr className="border-gray-300 bg-customBlack" />
       <div className="my-10">{props.children}</div>
       <UserFooter />
     </>
