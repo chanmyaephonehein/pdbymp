@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 const EachBlog = () => {
   const router = useRouter();
   return (
-    <div className="px-4 sm:px-8 md:px-16 lg:px-24 py-12 flex flex-col items-center">
+    <div className="px-4 sm:px-8 md:px-16 lg:px-24  flex flex-col items-center">
       <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-10 text-center">
         The Future of Work: How AI is Transforming the Digital Employee
         Experience

@@ -2,7 +2,7 @@ import React from "react";
 
 const EachIndustry = () => {
   return (
-    <div className="mx-auto px-4 sm:px-8 md:px-16 lg:px-24 py-12 text-center">
+    <div className="mx-auto px-4 sm:px-8 md:px-16 lg:px-24  text-center">
       <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
         Revolutionizing Finance with AI-Powered Solutions
       </h1>
