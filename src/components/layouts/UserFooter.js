@@ -8,7 +8,7 @@ const UserFooter = () => {
     { name: "Who are we", link: "/user/about" },
     { name: "Our Services", link: "/user/services" },
     { name: "Portfolio", link: "/user/portfolio" },
-    { name: "Contact Us", link: "/user/contact" },
+    { name: "Contact Us", link: "/user/contactus" },
     { name: "Sitemap", link: "/user/sitemap" },
   ];
 
