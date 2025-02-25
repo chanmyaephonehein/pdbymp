@@ -55,7 +55,7 @@ const UserHeader = () => {
   }, []);
 
   return (
-    <nav className=" px-6 py-4 flex justify-between items-center">
+    <nav className=" px-6 py-4 flex justify-between items-center sticky top-0 bg-white z-50 shadow-md">
       {/* Logo & Branding */}
       <div
         className="flex gap-3 items-center cursor-pointer"

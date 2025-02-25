@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 
 const UserLayout = (props) => {
   const router = useRouter();
-  const isContactUs = router.pathname.includes("/contactus");
   return (
     <>
       <UserHeader /> <hr className="border-gray-300 bg-customBlack" />
