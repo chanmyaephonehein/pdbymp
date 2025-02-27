@@ -12,3 +12,23 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model ContactInquiry {
+  id          String   @id @default(uuid())
+  name        String
+  email       String   @unique
+  phoneNumber String?
+  companyName String?
+  country     String
+  jobTitle    String?
+  jobDetails  String?
+  status      Status   @default(PENDING)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+enum Status {
+  PENDING
+  IN_PROGRESS
+  RESOLVED
+}

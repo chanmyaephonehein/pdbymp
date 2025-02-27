@@ -5,7 +5,7 @@ import AdminLayout from "./AdminLayout";
 
 const Layout = ({ children }) => {
   const router = useRouter();
-  const adminLayout = router.pathname.includes("/admin");
+  const adminLayout = router.pathname.includes("/backoffice");
   if (adminLayout) {
     return (
       <>
