@@ -179,9 +179,7 @@ const UserManagement = () => {
             >
               <FiX size={20} />
             </button>
-
             <h2 className="text-xl font-semibold mb-4">Add New User</h2>
-
             {/* Name */}
             <div className="mb-4">
               <label className="block text-sm text-gray-700">Name</label>
@@ -194,7 +192,6 @@ const UserManagement = () => {
                 placeholder="Enter name"
               />
             </div>
-
             {/* Email */}
             <div className="mb-4">
               <label className="block text-sm text-gray-700">Email</label>
@@ -206,8 +203,18 @@ const UserManagement = () => {
                 className="w-full p-2 border border-gray-300 rounded-md"
                 placeholder="Enter email"
               />
+            </div>{" "}
+            <div className="mb-4">
+              <label className="block text-sm text-gray-700">Password</label>
+              <input
+                type="password"
+                name="password"
+                value={userData.password}
+                onChange={handleChange}
+                className="w-full p-2 border border-gray-300 rounded-md"
+                placeholder="Enter password"
+              />
             </div>
-
             {/* Role Selection */}
             <div className="mb-4">
               <label className="block text-sm text-gray-700">Role</label>
@@ -222,7 +229,6 @@ const UserManagement = () => {
                 <option value="Staff">Staff</option>
               </select>
             </div>
-
             {/* Buttons */}
             <div className="flex justify-between mt-4">
               <button
