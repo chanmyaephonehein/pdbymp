@@ -56,10 +56,12 @@ const UserManagement = () => {
     <div className="min-h-screen p-6">
       {/* Header Section */}
       <div className="flex justify-between items-center mb-6">
-        <button className="bg-gray-200 px-4 py-2 rounded-md">← Back</button>
+        <button className="bg-gray-700 px-3 py-2 text-white rounded-md hover:bg-gray-900">
+          ← Back
+        </button>
         <h2 className="text-2xl font-semibold">Users</h2>
         <button
-          className="bg-gray-300 px-4 py-2 flex items-center gap-2 rounded-md hover:bg-gray-400"
+          className="bg-gray-700 px-3 py-2 text-white flex items-center gap-2 rounded-md hover:bg-gray-900"
           onClick={() => setIsModalOpen(true)}
         >
           <FiUserPlus />
@@ -80,7 +82,7 @@ const UserManagement = () => {
 
         {/* Filter Button */}
         <button
-          className="bg-gray-300 px-4 py-2 flex items-center gap-2 rounded-md hover:bg-gray-400"
+          className="bg-gray-700 px-4 py-2 text-white flex items-center gap-2 rounded-md hover:bg-gray-900"
           onClick={() => setIsFilterOpen(true)}
         >
           <CiFilter />
