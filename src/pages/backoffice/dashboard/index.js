@@ -1,42 +1,49 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import { CiSquareMore } from "react-icons/ci";
+import { FaSearch } from "react-icons/fa";
 
 const Dashboard = () => {
-  const [data, setData] = useState([
-    {
-      name: "Kyra",
-      email: "Kyra2025@gmail.com",
-      country: "Myanmar",
-      status: "PENDING",
-    },
-    {
-      name: "Jasmine",
-      email: "Jasmine2024@gmail.com",
-      country: "Singapore",
-      status: "IN_PROGRESS",
-    },
-    {
-      name: "Frank",
-      email: "Frank225@gmail.com",
-      country: "Singapore",
-      status: "RESOLVED",
-    },
-  ]);
+  const router = useRouter();
+  const [data, setData] = useState([]);
 
-  const [openDropdown, setOpenDropdown] = useState(null);
-
-  // Function to Handle Status Change
-  const handleStatusChange = (index, newStatus) => {
-    setData((prevData) =>
-      prevData.map((item, i) =>
-        i === index ? { ...item, status: newStatus } : item
-      )
-    );
+  const fetchAllData = async () => {
+    const response = await fetch(`http://localhost:3000/api/inquries`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const responseData = await response.json();
+    setData(responseData);
+    console.log(responseData);
   };
 
-  // Function to Delete an Entry
-  const handleDelete = (index) => {
-    setData((prevData) => prevData.filter((_, i) => i !== index));
+  // Function to Handle Status Change
+  const handleStatusChange = async (id, newStatus) => {
+    // Update state optimistically
+    setData((prevData) =>
+      prevData.map((item) =>
+        item.id === id ? { ...item, status: newStatus } : item
+      )
+    );
+
+    // Send update request to the API
+    try {
+      const response = await fetch(`http://localhost:3000/api/inquries`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id, status: newStatus }), // Use 'id' instead of 'index'
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to update status");
+      }
+
+      const updatedInquiry = await response.json();
+      console.log("Updated Inquiry:", updatedInquiry);
+    } catch (error) {
+      console.error("Error updating status:", error);
+    }
   };
 
   // Function to Get Color Based on Status
@@ -53,8 +60,23 @@ const Dashboard = () => {
     }
   };
 
+  useEffect(() => {
+    fetchAllData();
+  }, []);
+
   return (
     <div className="overflow-x-auto p-6">
+      {" "}
+      <div className="flex items-center  justify-center w-full pb-8">
+        <input
+          type="text"
+          placeholder="Search"
+          className="w-[150px] lg:w-[400px] p-2 border border-gray-300 rounded-md mr-2"
+        />
+        <div className="border border-gray-300 p-3 rounded-md cursor-pointer hover:bg-mainColor">
+          <FaSearch />
+        </div>
+      </div>
       <table className="w-full border-collapse border border-gray-300">
         <thead>
           <tr className="bg-gray-200 text-left">
@@ -66,15 +88,15 @@ const Dashboard = () => {
           </tr>
         </thead>
         <tbody>
-          {data.map((item, index) => (
-            <tr key={index} className="border">
+          {data.map((item) => (
+            <tr key={item.id} className="border">
               <td className="p-3 border">{item.name}</td>
               <td className="p-3 border">{item.email}</td>
               <td className="p-3 border">{item.country}</td>
               <td className="p-3 border">
                 <select
                   value={item.status}
-                  onChange={(e) => handleStatusChange(index, e.target.value)}
+                  onChange={(e) => handleStatusChange(item.id, e.target.value)} // Using item.id instead of index
                   className={`p-2 border rounded-md font-semibold ${getStatusColor(
                     item.status
                   )}`}
@@ -84,31 +106,13 @@ const Dashboard = () => {
                   <option value="RESOLVED">RESOLVED</option>
                 </select>
               </td>
-              <td className="p-3 border relative">
-                <div className="relative">
-                  <CiSquareMore
-                    className="text-3xl cursor-pointer"
-                    onClick={() =>
-                      setOpenDropdown(openDropdown === index ? null : index)
-                    }
-                  />
-                  {openDropdown === index && (
-                    <div className="absolute right-0 mt-2 w-32 bg-white border shadow-md rounded-md z-50">
-                      <button
-                        className="block w-full text-left px-4 py-2 hover:bg-gray-100"
-                        onClick={() => alert("Edit action")}
-                      >
-                        Edit
-                      </button>
-                      <button
-                        className="block w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100"
-                        onClick={() => handleDelete(index)}
-                      >
-                        Delete
-                      </button>
-                    </div>
-                  )}
-                </div>
+              <td className="p-3 border text-center">
+                <CiSquareMore
+                  className="text-3xl cursor-pointer"
+                  onClick={() =>
+                    router.push(`/backoffice/dashboard/${item.id}`)
+                  }
+                />
               </td>
             </tr>
           ))}

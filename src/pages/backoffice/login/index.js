@@ -5,9 +5,18 @@ const AdminLogin = () => {
   const [password, setPassword] = useState("");
   const [recaptchaChecked, setRecaptchaChecked] = useState(false);
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     // Handle login logic here
+    const response = await fetch("http://localhost:3000/api/login", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
+    const accessToken = await response.json();
+    localStorage.setItem("accessToken", accessToken);
     console.log({ email, password, recaptchaChecked });
   };
 

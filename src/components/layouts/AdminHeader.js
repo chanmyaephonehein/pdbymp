@@ -41,9 +41,8 @@ const AdminHeader = ({ setIsDrawerOpen }) => {
           <img src="/image18.png" className="w-12 h-12" />
           <p className="text-black">AI Solutions</p>
         </div>
-
         {/* Search Input */}
-        <div className="flex items-center mx-4 justify-center w-full">
+        {/* <div className="flex items-center mx-4 justify-center w-full">
           <input
             type="text"
             placeholder="Search"
@@ -52,17 +51,16 @@ const AdminHeader = ({ setIsDrawerOpen }) => {
           <div className="border border-gray-300 p-3 rounded-md cursor-pointer hover:bg-mainColor">
             <FaSearch />
           </div>
-        </div>
-
-        {/* Profile & Drawer Button (Only Show Profile on Desktop) */}
-        <div className="hidden lg:flex items-center gap-8">
-          <CiFilter
+        </div> */}
+        <div className="flex justify-end items-center w-full">
+          <div className="hidden lg:flex items-center  gap-8">
+            {/* <CiFilter
             className="text-3xl cursor-pointer"
             onClick={() => setIsFilterOpen(true)}
-          />
-          <FiUser className="text-2xl cursor-pointer" />
+          /> */}
+            <FiUser className="text-2xl cursor-pointer" />
+          </div>
         </div>
-
         {/* Mobile/Tablet Drawer Toggle */}
         <button
           className="lg:hidden flex items-center gap-5"

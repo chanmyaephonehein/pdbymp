@@ -1,50 +1,73 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import axios from "axios"; // Assuming you're using Axios for API calls
 import { FiDownload } from "react-icons/fi";
 
 const ManagementDetail = () => {
   const router = useRouter();
-  const { id } = router.query;
+  const { id } = router.query; // Get dynamic ID from query params
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (!id) return; // Wait for the id to be available
+
+    const fetchData = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const res = await fetch(`http://localhost:3000/api/inquries?id=${id}`, {
+          headers: { "Content-Type": "application/json" },
+        });
+        const result = await res.json();
+
+        if (!res.ok) throw new Error(result.error || "Data not found");
+        setData(result);
+      } catch (err) {
+        setError(err.message);
+      }
+      setLoading(false);
+    };
+
+    fetchData();
+  }, [id]); // Fetch data when `id` changes
 
   if (loading) return <p className="text-center text-lg">Loading...</p>;
+  if (error) return <p className="text-center text-lg text-red-500">{error}</p>;
   if (!data) return <p className="text-center text-lg">No data found.</p>;
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-6">
-      <div className="bg-gray-200 p-6 rounded-md shadow-md w-full max-w-lg">
-        <p className="mb-2">
-          <strong>Name:</strong> {data.name}
-        </p>
-        <p className="mb-2">
-          <strong>Email:</strong> {data.email}
-        </p>
-        <p className="mb-2">
-          <strong>Phone:</strong> {data.phone}
-        </p>
-        <p className="mb-2">
-          <strong>Company Name:</strong> {data.companyName}
-        </p>
-        <p className="mb-2">
-          <strong>Country:</strong> {data.country}
-        </p>
-        <p className="mb-2">
-          <strong>Job Title:</strong> {data.jobTitle}
-        </p>
-        <p className="mb-2">
-          <strong>Job Details:</strong>
-        </p>
-        <p className="mb-4">{data.jobDetails}</p>
+    <div className="flex flex-col  min-h-screen p-6">
+      {/* Back Button (Now Visible) */}
+      <div className="w-full max-w-lg">
+        <button
+          className="bg-gray-700 text-white px-4 py-2 rounded-md hover:bg-gray-900 mb-4"
+          onClick={() => router.push("/backoffice/dashboard")} // Navigate back to dashboard
+        >
+          ← Back
+        </button>
       </div>
 
-      <button className="bg-gray-700 text-white px-6 py-2 mt-4 rounded-md flex items-center gap-2">
-        <FiDownload /> Download
-      </button>
+      {/* Data Display */}
+      <div className="flex justify-center items-center">
+        <div className=" p-6 rounded-md shadow-md w-full max-w-lg">
+          {Object.entries(data).map(([key, value]) => (
+            <p className="mb-4" key={key}>
+              <strong className="capitalize">
+                {key.replace(/([A-Z])/g, " $1")}:
+              </strong>{" "}
+              {value}
+            </p>
+          ))}
+        </div>
+      </div>
+
+      <div className="flex justify-center items-center">
+        <button className="bg-gray-700 flex items-center text-white px-6 py-2 mt-4 rounded-md gap-2">
+          <FiDownload /> Download
+        </button>
+      </div>
     </div>
   );
 };
