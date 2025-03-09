@@ -1,4 +1,4 @@
-import SolutionCard from "@/components/cards/SolutionCard";
+import SolutionCard from "../../../components/cards/SolutionCard";
 import React from "react";
 
 const Solutions = () => {

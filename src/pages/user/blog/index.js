@@ -1,4 +1,4 @@
-import BlogCard from "@/components/cards/BlogCard";
+import BlogCard from "../../../components/cards/BlogCard";
 import React from "react";
 
 const blog = [

@@ -1,4 +1,4 @@
-import SolutionCard from "@/components/cards/SolutionCard";
+import SolutionCard from "../../../components/cards/SolutionCard";
 import React, { useState } from "react";
 
 const industries = [

@@ -1,4 +1,4 @@
-import FeedbackCard from "@/components/cards/FeedBackCard";
+import FeedbackCard from "../../../components/cards/FeedBackCard";
 import React from "react";
 
 const feedbacks = [
