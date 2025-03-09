@@ -1,8 +1,9 @@
 "use client";
 import React, { useState } from "react";
 import AdminSidebar from "@/components/layouts/AdminSidebar";
-import AdminHeader from "@/components/layouts/AdminHeader";
 import AdminDrawer from "@/components/layouts/AdminDrawer";
+import AdminHeader from "./AdminHeader";
+
 import { useRouter } from "next/router";
 
 const AdminLayout = ({ children }) => {
@@ -20,7 +21,6 @@ const AdminLayout = ({ children }) => {
 
         <div className="flex flex-col flex-1">
           <AdminHeader setIsDrawerOpen={setIsDrawerOpen} />
-
           <main className="p-6">{children}</main>
         </div>
 

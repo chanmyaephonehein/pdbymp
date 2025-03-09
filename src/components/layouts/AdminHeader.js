@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { FiMenu, FiUser, FiX } from "react-icons/fi";
 import { CiFilter } from "react-icons/ci";
-import { FaSearch } from "react-icons/fa";
 import Select from "react-select";
 import countryList from "react-select-country-list";
 

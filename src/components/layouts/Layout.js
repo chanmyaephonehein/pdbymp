@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import React from "react";
 import UserLayout from "./UserLayout";
 import AdminLayout from "./AdminLayout";
-
 const Layout = ({ children }) => {
   const router = useRouter();
   const adminLayout = router.pathname.includes("/backoffice");
