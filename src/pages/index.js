@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
-import IndustryImgCard from "@/components/cards/IndustryImgCard";
-import SolutionCard from "@/components/cards/SolutionCard";
+import IndustryImgCard from "../components/cards/IndustryImgCard";
 
 const images = [
   {

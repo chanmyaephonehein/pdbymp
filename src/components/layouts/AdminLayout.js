@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import AdminSidebar from "@/components/layouts/AdminSidebar";
-import AdminDrawer from "@/components/layouts/AdminDrawer";
+import AdminSidebar from "./AdminSidebar";
+import AdminDrawer from "./AdminDrawer";
 import AdminHeader from "./AdminHeader";
 
 import { useRouter } from "next/router";
