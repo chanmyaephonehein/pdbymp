@@ -8,14 +8,23 @@ const Dashboard = () => {
   const [data, setData] = useState([]);
 
   const fetchAllData = async () => {
-    const response = await fetch(`http://localhost:3000/api/inquries`, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const responseData = await response.json();
-    setData(responseData);
-    console.log(responseData);
+    try {
+      const response = await fetch(`http://localhost:3000/api/inquiries`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const responseData = await response.json();
+      setData(responseData);
+      console.log(responseData);
+    } catch (error) {
+      console.error("Error fetching data:", error.message);
+    }
   };
 
   // Function to Handle Status Change
@@ -88,34 +97,37 @@ const Dashboard = () => {
           </tr>
         </thead>
         <tbody>
-          {data.map((item) => (
-            <tr key={item.id} className="border">
-              <td className="p-3 border">{item.name}</td>
-              <td className="p-3 border">{item.email}</td>
-              <td className="p-3 border">{item.country}</td>
-              <td className="p-3 border">
-                <select
-                  value={item.status}
-                  onChange={(e) => handleStatusChange(item.id, e.target.value)} // Using item.id instead of index
-                  className={`p-2 border rounded-md font-semibold ${getStatusColor(
-                    item.status
-                  )}`}
-                >
-                  <option value="PENDING">PENDING</option>
-                  <option value="IN_PROGRESS">IN PROGRESS</option>
-                  <option value="RESOLVED">RESOLVED</option>
-                </select>
-              </td>
-              <td className="p-3 border text-center">
-                <CiSquareMore
-                  className="text-3xl cursor-pointer"
-                  onClick={() =>
-                    router.push(`/backoffice/dashboard/${item.id}`)
-                  }
-                />
-              </td>
-            </tr>
-          ))}
+          {data &&
+            data.map((item) => (
+              <tr key={item.id} className="border">
+                <td className="p-3 border">{item.name}</td>
+                <td className="p-3 border">{item.email}</td>
+                <td className="p-3 border">{item.country}</td>
+                <td className="p-3 border">
+                  <select
+                    value={item.status}
+                    onChange={(e) =>
+                      handleStatusChange(item.id, e.target.value)
+                    } // Using item.id instead of index
+                    className={`p-2 border rounded-md font-semibold ${getStatusColor(
+                      item.status
+                    )}`}
+                  >
+                    <option value="PENDING">PENDING</option>
+                    <option value="IN_PROGRESS">IN PROGRESS</option>
+                    <option value="RESOLVED">RESOLVED</option>
+                  </select>
+                </td>
+                <td className="p-3 border text-center">
+                  <CiSquareMore
+                    className="text-3xl cursor-pointer"
+                    onClick={() =>
+                      router.push(`/backoffice/dashboard/${item.id}`)
+                    }
+                  />
+                </td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </div>
