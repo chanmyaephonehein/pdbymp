@@ -24,6 +24,7 @@ export default async function handler(req, res) {
       // Fetch all inquiries
       try {
         const allInquiries = await prisma.contactInquiry.findMany();
+
         return res.json(allInquiries);
       } catch (error) {
         return res
