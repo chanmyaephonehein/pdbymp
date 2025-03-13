@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { CiSquareMore } from "react-icons/ci";
 import { FaSearch } from "react-icons/fa";
+import useAuth from "../../../utils/authMiddleware";
 
 const Dashboard = () => {
   const router = useRouter();
   const [data, setData] = useState([]);
+  const isAuthenticated = useAuth();
 
   const fetchAllData = async () => {
     try {
@@ -73,6 +75,8 @@ const Dashboard = () => {
   useEffect(() => {
     fetchAllData();
   }, []);
+
+  if (!isAuthenticated) return null;
 
   return (
     <div className="overflow-x-auto p-6">

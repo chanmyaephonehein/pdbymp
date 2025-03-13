@@ -8,9 +8,10 @@ import { FaSearch } from "react-icons/fa";
 const UserManagement = () => {
   const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [selectedRole, setSelectedRole] = useState(""); // Role Filter
   const [searchTerm, setSearchTerm] = useState(""); // Search Input
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [userData, setUserData] = useState({
     name: "",
     email: "",
@@ -18,20 +19,42 @@ const UserManagement = () => {
     role: "",
   });
 
-  const [users, setUsers] = useState([]);
-
   const fetchUsers = async () => {
-    const response = await fetch("http://localhost:3000/api/users", {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    });
-    const result = await response.json();
-    setUsers(result);
+    const token = localStorage.getItem("token");
+    if (!token) {
+      router.push("/backoffice/login");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:3000/api/users", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) throw new Error("Failed to fetch users");
+
+      const result = await response.json();
+      setUsers(result);
+    } catch (error) {
+      console.error("Error fetching users:", error);
+      alert("Failed to load users.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
-    fetchUsers();
-  }, []);
+    const role = localStorage.getItem("role");
+    if (role !== "Admin") {
+      router.push("/backoffice/dashboard");
+    } else {
+      fetchUsers();
+    }
+  }, [router]);
 
   const handleSubmit = async () => {
     if (
@@ -44,29 +67,32 @@ const UserManagement = () => {
       return;
     }
 
-    try {
-      console.log("Sending user data:", userData); // Debugging: Check request data
+    const token = localStorage.getItem("token");
+    if (!token) {
+      router.push("/backoffice/login");
+      return;
+    }
 
-      const response = await fetch("http://localhost:3000/api/users", {
+    try {
+      const response = await fetch("/api/users", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(userData), // Ensure JSON format
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(userData),
       });
 
-      const result = await response.json();
+      if (!response.ok) throw new Error("Failed to add user");
+
+      await response.json();
       fetchUsers();
       alert("User Added Successfully");
       setIsModalOpen(false);
-      if (!response.ok) {
-        console.error("Error response from server:", result);
-        throw new Error(result.message || "Failed to add user");
-      }
-
-      console.log("User added successfully:", result);
       setUserData({ name: "", email: "", password: "", role: "" });
     } catch (error) {
-      console.error("Error adding user:", error.message);
-      alert(`Failed to add user: ${error.message}`);
+      console.error("Error adding user:", error);
+      alert("Failed to add user");
     }
   };
 
@@ -79,7 +105,6 @@ const UserManagement = () => {
 
   return (
     <div className="min-h-screen p-6">
-      {/* Header Section */}
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-semibold">Users</h2>
         <button
@@ -90,58 +115,36 @@ const UserManagement = () => {
           Add User
         </button>
       </div>
-
-      {/* Search & Filter Section */}
-      <div className="flex items-center w-full justify-between pb-8">
-        <div className="flex items-center gap-1">
-          <input
-            type="text"
-            placeholder="Search"
-            className="w-[150px] lg:w-[400px] p-2 border border-gray-300 rounded-md mr-2"
-          />
-          <div className="border border-gray-300 p-3 rounded-md cursor-pointer hover:bg-mainColor">
-            <FaSearch />
-          </div>
-        </div>
-
-        {/* Filter Button */}
-        <button
-          className="bg-gray-700 px-4 py-2 text-white flex items-center gap-2 rounded-md hover:bg-gray-900"
-          onClick={() => setIsFilterOpen(true)}
-        >
-          <CiFilter />
-          Filter
-        </button>
-      </div>
-
-      {/* User Table */}
-      <div className="overflow-x-auto">
-        <table className="w-full border-collapse border border-gray-300">
-          <thead>
-            <tr className="bg-gray-200">
-              <th className="p-3 border">Action</th>
-              <th className="p-3 border">ID</th>
-              <th className="p-3 border">Name</th>
-              <th className="p-3 border">Email</th>
-              <th className="p-3 border">Role</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredUsers.map((user) => (
-              <tr key={user.id} className="border">
-                <td className="p-3 border text-center">
-                  <FiArrowRight className="cursor-pointer" />
-                </td>
-                <td className="p-3 border">{user.id}</td>
-                <td className="p-3 border">{user.name}</td>
-                <td className="p-3 border">{user.email}</td>
-                <td className="p-3 border">{user.role}</td>
+      {loading ? (
+        <p className="text-center text-gray-500">Loading users...</p>
+      ) : (
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse border border-gray-300">
+            <thead>
+              <tr className="bg-gray-200">
+                <th className="p-3 border">Action</th>
+                <th className="p-3 border">ID</th>
+                <th className="p-3 border">Name</th>
+                <th className="p-3 border">Email</th>
+                <th className="p-3 border">Role</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
+            </thead>
+            <tbody>
+              {filteredUsers.map((user) => (
+                <tr key={user.id} className="border">
+                  <td className="p-3 border text-center">
+                    <FiArrowRight className="cursor-pointer" />
+                  </td>
+                  <td className="p-3 border">{user.id}</td>
+                  <td className="p-3 border">{user.name}</td>
+                  <td className="p-3 border">{user.email}</td>
+                  <td className="p-3 border">{user.role}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}{" "}
       {/* Add User Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">

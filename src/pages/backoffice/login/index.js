@@ -1,22 +1,25 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
 
-const AdminLogin = () => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [recaptchaChecked, setRecaptchaChecked] = useState(false);
-
+  const router = useRouter();
   const handleLogin = async (e) => {
     e.preventDefault();
     // Handle login logic here
-    const response = await fetch("http://localhost:3000/api/login", {
-      method: "GET",
+    const response = await fetch("http://localhost:3000/api/auth/login", {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ email, password }),
     });
-    const accessToken = await response.json();
-    localStorage.setItem("accessToken", accessToken);
+    const data = await response.json();
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("role", data.role);
+    router.push("/backoffice/dashboard");
     console.log({ email, password, recaptchaChecked });
   };
 
@@ -96,4 +99,4 @@ const AdminLogin = () => {
   );
 };
 
-export default AdminLogin;
+export default Login;
