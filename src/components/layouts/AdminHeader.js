@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { FiMenu, FiUser, FiX } from "react-icons/fi";
+import { FiMenu, FiUser, FiX, FiLogOut } from "react-icons/fi";
 import { CiFilter } from "react-icons/ci";
 import Select from "react-select";
 import countryList from "react-select-country-list";
@@ -29,6 +29,11 @@ const AdminHeader = ({ setIsDrawerOpen }) => {
     setIsFilterOpen(false); // Close modal after applying filters
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.reload();
+  };
+
   return (
     <>
       <header className="flex justify-between items-center p-4 sticky top-0 bg-white z-50 shadow-md">
@@ -40,37 +45,32 @@ const AdminHeader = ({ setIsDrawerOpen }) => {
           <img src="/image18.png" className="w-12 h-12" />
           <p className="text-black">AI Solutions</p>
         </div>
-        {/* Search Input */}
-        {/* <div className="flex items-center mx-4 justify-center w-full">
-          <input
-            type="text"
-            placeholder="Search"
-            className="w-[150px] lg:w-[400px] p-2 border border-gray-300 rounded-md mr-2"
-          />
-          <div className="border border-gray-300 p-3 rounded-md cursor-pointer hover:bg-mainColor">
-            <FaSearch />
-          </div>
-        </div> */}
+
         <div className="flex justify-end items-center w-full">
-          <div className="hidden lg:flex items-center  gap-8">
-            {/* <CiFilter
-            className="text-3xl cursor-pointer"
-            onClick={() => setIsFilterOpen(true)}
-          /> */}
+          <div className="hidden lg:flex items-center gap-8">
             <FiUser className="text-2xl cursor-pointer" />
+            <button
+              className="flex items-center gap-2 px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-700"
+              onClick={handleLogout}
+            >
+              <FiLogOut /> Logout
+            </button>
           </div>
         </div>
+
         {/* Mobile/Tablet Drawer Toggle */}
-        <button
-          className="lg:hidden flex items-center gap-5"
-          onClick={() => setIsDrawerOpen(true)}
-        >
-          <CiFilter
-            className="text-3xl cursor-pointer"
-            onClick={() => setIsFilterOpen(true)}
+        <div className="lg:hidden flex items-center gap-5">
+          <FiMenu
+            className="text-2xl cursor-pointer"
+            onClick={() => setIsDrawerOpen(true)}
           />
-          <FiMenu className="text-2xl cursor-pointer" />
-        </button>
+          <button
+            className="p-2 bg-red-500 text-white rounded-md hover:bg-red-700"
+            onClick={handleLogout}
+          >
+            <FiLogOut className="text-xl" />
+          </button>
+        </div>
       </header>
 
       {/* 🔥 Filter Modal */}
@@ -86,6 +86,7 @@ const AdminHeader = ({ setIsDrawerOpen }) => {
                 <FiX size={20} />
               </button>
             </div>
+
             {/* Country Dropdown */}
             <div className="mb-4">
               <label className="block text-sm font-medium">Country</label>
