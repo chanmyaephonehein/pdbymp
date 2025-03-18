@@ -21,7 +21,7 @@ const UserManagement = () => {
 
   const fetchUsers = async () => {
     const token = localStorage.getItem("token");
-    if (!token) {
+    if (!token || token === "undefined") {
       router.push("/backoffice/login");
       return;
     }

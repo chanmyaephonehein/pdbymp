@@ -8,7 +8,7 @@ export default function useAuth() {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    if (!token) {
+    if (!token || token === "undefined") {
       router.push("/backoffice/login"); // Redirect if no token
     } else {
       setIsAuthenticated(true);
